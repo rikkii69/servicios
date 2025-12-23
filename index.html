@@ -6,7 +6,7 @@
     <title>Servicios Streaming</title>
     <style>
         /* ==========================================
-           1. ESTILOS GENERALES (Fondo y Cuerpo)
+           1. ESTILOS GENERALES
            ========================================== */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -38,7 +38,7 @@
             z-index: 2000;
         }
         .modal-container {
-            position: relative; width: 85%; max-width: 320px; /* Medida pequeña para móvil */
+            position: relative; width: 85%; max-width: 320px;
             background: #1a1a1a; padding: 25px 15px 15px 15px;
             border-radius: 20px; text-align: center; border: 2px solid #b388ff;
         }
@@ -51,7 +51,7 @@
         .modal-video { width: 100%; height: auto; border-radius: 10px; margin-top: 10px; display: block; }
         .unmute-btn {
             margin-top: 15px; background: #444; color: white;
-            border: 1.5px solid #b388ff; padding: 12px 20px; /* Botón grande */
+            border: 1.5px solid #b388ff; padding: 12px 20px;
             border-radius: 10px; cursor: pointer; font-size: 1rem;
             font-weight: bold; width: 100%;
         }
@@ -89,23 +89,57 @@
         .card:hover .buy-btn { background: white; color: black; }
 
         /* ==========================================
-           6. PIE DE PÁGINA (FOOTER)
+           6. PIE DE PÁGINA (FOOTER OPTIMIZADO)
            ========================================== */
-        footer { width: 100%; background-color: #1a1a1a; padding: 40px 0 20px 0; margin-top: 40px; border-top: 1px solid #333; }
-        .footer-content { max-width: 1100px; margin: 0 auto; width: 90%; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px; }
-        .footer-about { flex: 1; min-width: 280px; display: flex; align-items: center; gap: 20px; }
-        .footer-logo { height: 50px; width: auto; }
-        .footer-text { font-size: 0.9rem; line-height: 1.6; color: #ccc; margin: 0; }
-        .footer-payments { flex: 0 1 300px; text-align: center; }
-        .footer-payments h3 { font-size: 1.1rem; margin-bottom: 15px; color: #b388ff; }
-        .payment-img { width: 100%; max-width: 250px; height: auto; border-radius: 8px; }
-        .footer-bottom { width: 90%; max-width: 1100px; margin: 30px auto 0 auto; border-top: 1px solid #333; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #777; }
+        footer { 
+            width: 100%; background-color: #1a1a1a; padding: 40px 0 20px 0; 
+            margin-top: 40px; border-top: 1px solid #333; 
+        }
+        .footer-content { 
+            max-width: 1200px; margin: 0 auto; width: 95%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; /* ESPECIFICACIÓN: Alinea todo al centro verticalmente */
+            flex-wrap: wrap; gap: 30px; 
+        }
+        
+        /* Contenedor de Logo y Texto */
+        .footer-about { 
+            flex: 2; /* Toma más espacio para el texto */
+            min-width: 300px; 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .footer-logo { height: 60px; width: auto; }
+        .footer-text { font-size: 0.95rem; line-height: 1.5; color: #ccc; margin: 0; }
+
+        /* Contenedor de Métodos de Pago */
+        .footer-payments { 
+            flex: 1; 
+            min-width: 250px; 
+            text-align: right; /* Alinea contenido a la derecha en PC */
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end; /* Alinea el título y la imagen a la derecha */
+        }
+        .footer-payments h3 { font-size: 1.1rem; margin: 0 0 10px 0; color: #b388ff; }
+        .payment-img { width: 100%; max-width: 300px; height: auto; border-radius: 5px; }
+
+        .footer-bottom { 
+            width: 90%; max-width: 1200px; margin: 30px auto 0 auto; 
+            border-top: 1px solid #333; padding-top: 20px; 
+            text-align: center; font-size: 0.85rem; color: #777; 
+        }
 
         /* --- AJUSTES PARA CELULAR --- */
+        @media (max-width: 850px) {
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-about { flex-direction: column; text-align: center; }
+            .footer-payments { text-align: center; align-items: center; }
+        }
         @media (max-width: 600px) {
             .container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .footer-content { flex-direction: column; align-items: center; text-align: center; }
-            .footer-about { flex-direction: column; }
         }
     </style>
 </head>
