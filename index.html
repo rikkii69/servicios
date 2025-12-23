@@ -3,108 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MistiPlay - Servicios Streaming</title>
+    <title>MistiPlay - Streaming</title>
     <style>
-        /* 1. ESTILOS GENERALES */
+        /* --- 1. FONDO Y TEXTO GENERAL --- */
         body { font-family: 'Segoe UI', sans-serif; background-color: #0b0b0b; color: white; margin: 0; display: flex; flex-direction: column; align-items: center; }
 
-        /* 2. HEADER */
-        header { width: 100%; background-color: #1a1a1a; padding: 10px 0; display: flex; justify-content: center; position: sticky; top: 0; z-index: 1000; }
-        .header-icon { height: 60px; width: auto; }
-
-        /* 3. MODAL (ESPECIFICACIÓN: VIDEO VERTICAL 9:16) */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 2000; }
-        .modal-container { position: relative; width: 85%; max-width: 320px; background: #1a1a1a; padding: 25px 15px; border-radius: 20px; text-align: center; border: 2px solid #b388ff; }
-        .close-modal { position: absolute; top: -15px; right: -10px; background: #ff4d4d; color: white; border: 2px solid white; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        .modal-video { width: 100%; border-radius: 10px; display: block; }
-        .unmute-btn { margin-top: 15px; background: #444; color: white; border: 1.5px solid #b388ff; padding: 12px; border-radius: 10px; cursor: pointer; width: 100%; font-weight: bold; }
-
-        /* 4. TARJETAS (ESPECIFICACIÓN: OCULTAR URL TOTALMENTE) */
-        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; width: 90%; padding: 40px 0; }
-        
-        /* Quitamos cualquier rastro de etiqueta 'a' y usamos 'card' directamente */
-        .card { 
-            background: #161616; border-radius: 20px; overflow: hidden; border: 1px solid #333; 
-            transition: 0.3s; text-align: center; 
-            cursor: pointer; /* ESPECIFICACIÓN: Muestra la mano para indicar clic */
-            -webkit-tap-highlight-color: transparent; /* Evita cuadros azules en móvil */
+        /* --- 2. ENCABEZADO (HEADER) --- */
+        header { 
+            width: 100%; 
+            background-color: #1a1a1a; 
+            padding: 10px 0; /* Espacio arriba/abajo de la barra */
+            display: flex; justify-content: center; position: sticky; top: 0; z-index: 1000; 
         }
-        .card:hover { transform: translateY(-10px); border-color: #555; }
-        .card img { width: 100%; display: block; pointer-events: none; /* Evita arrastrar la imagen */ }
-        .info { padding: 15px; }
-        .price { font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; display: block; }
-        .buy-btn { display: block; border: 1.5px solid white; color: white; padding: 7px 0; border-radius: 20px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; }
-        .card:hover .buy-btn { background: white; color: black; }
+        .header-icon { 
+            height: 60px; /* TAMAÑO DEL ICONO ARRIBA */
+            width: auto; 
+        }
 
-        /* 5. FOOTER ALINEADO */
-        footer { width: 100%; background-color: #1a1a1a; padding: 40px 0 20px; border-top: 1px solid #333; margin-top: 40px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; width: 95%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
-        .footer-about { flex: 2; display: flex; align-items: center; gap: 20px; min-width: 300px; }
-        .footer-logo { height: 60px; }
-        .footer-payments { flex: 1; text-align: right; display: flex; flex-direction: column; align-items: flex-end; min-width: 250px; }
-        .payment-img { width: 100%; max-width: 250px; border-radius: 5px; }
-        .footer-bottom { text-align: center; border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; color: #777; font-size: 0.85rem; }
+        /* --- 3. MODAL DE VIDEO (ESPECIFICACIÓN VERTICAL) --- */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-container { 
+            position: relative; width: 85%; 
+            max-width: 320px; /* ANCHO DEL VIDEO VERTICAL */
+            background: #1a1a1a; padding: 25px 15px; border-radius: 20px; text-align: center; border: 2px solid #b388ff; 
+        }
+        .modal-video { width: 100%; border-radius: 10px; display: block; }
 
-        @media (max-width: 600px) { .container { grid-template-columns: repeat(2, 1fr); gap: 12px; } .footer-content { flex-direction: column; text-align: center; } .footer-payments { align-items: center; } }
+        /* --- 4. TÍTULO PRINCIPAL (IMAGEN "SERVICIOS STREAMING") --- */
+        .title-container { width: 100%; padding: 20px 0; text-align: center; }
+        .main-title-img { 
+            width: 90%; 
+            max-width: 500px; /* TAMAÑO DEL TÍTULO PRINCIPAL */
+            height: auto; margin: 0 auto; 
+        }
+
+        /* --- 5. TARJETAS DE SERVICIOS --- */
+        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; width: 90%; padding: 40px 0; }
+        .card { background: #161616; border-radius: 20px; overflow: hidden; border: 1px solid #333; transition: 0.3s; text-align: center; cursor: pointer; }
+        .card img { width: 100%; display: block; }
+        .price { 
+            font-size: 1.3rem; /* TAMAÑO DEL PRECIO */
+            font-weight: bold; padding: 15px; display: block; 
+        }
+        .buy-btn { display: block; margin: 0 15px 15px; border: 1.5px solid white; color: white; padding: 7px 0; border-radius: 20px; font-weight: bold; text-transform: uppercase; }
+
+        /* --- 6. PIE DE PÁGINA (FOOTER) --- */
+        footer { width: 100%; background-color: #1a1a1a; padding: 40px 0; border-top: 1px solid #333; margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; width: 95%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .footer-logo { 
+            height: 60px; /* TAMAÑO DEL LOGO EN EL FOOTER */
+            width: auto; 
+        }
+        .payment-img { 
+            width: 100%; 
+            max-width: 150px; /* TAMAÑO DE LA IMAGEN DE MÉTODOS DE PAGO */
+            height: auto; 
+        }
+
+        /* RESPONSIVO (MÓVIL) */
+        @media (max-width: 600px) {
+            .container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .footer-content { flex-direction: column; text-align: center; gap: 30px; }
+            .footer-payments { align-items: center; display: flex; flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
     <div class="overlay" id="videoModal">
         <div class="modal-container">
-            <button class="close-modal" onclick="cerrarModal()">Cerrar X</button>
+            <button onclick="cerrarModal()" style="position:absolute; top:-15px; right:-10px; background:#ff4d4d; color:white; border:2px solid white; padding:8px 15px; border-radius:10px; cursor:pointer; font-weight:bold;">Cerrar X</button>
             <video class="modal-video" id="videoPlayer" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
-            <button class="unmute-btn" id="audioBtn" onclick="alternarSonido()">🔊 Activar Sonido</button>
-            <div onclick="abrirWA('Información')" style="margin-top:15px; background:#b388ff; color:white; padding:12px; border-radius:30px; font-weight:bold; cursor:pointer;">Más información</div>
+            <button id="audioBtn" onclick="alternarSonido()" style="margin-top:15px; background:#444; color:white; border:1.5px solid #b388ff; padding:12px; border-radius:10px; cursor:pointer; width:100%; font-weight:bold;">🔊 Activar Sonido</button>
+            <div onclick="irWA('Información')" style="margin-top:15px; background:#b388ff; color:white; padding:12px; border-radius:30px; font-weight:bold; cursor:pointer;">Más información</div>
         </div>
     </div>
 
     <header><img src="icono.png" class="header-icon"></header>
 
+    <div class="title-container">
+        <img src="titulo.png" class="main-title-img">
+    </div>
+
     <div class="container">
-        <div class="card" onclick="abrirWA('Netflix')"><img src="Netflix.jpg"><div class="info"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Disney')"><img src="Disney.jpg"><div class="info"><span class="price">S/ 14.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Max')"><img src="Max.jpg"><div class="info"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Paramount')"><img src="Paramount.jpg"><div class="info"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('PrimeVideo')"><img src="Primevideo.jpg"><div class="info"><span class="price">S/ 10.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Vix')"><img src="Vix.jpg"><div class="info"><span class="price">S/ 10.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Crunchyroll')"><img src="Crunchyroll.jpg"><div class="info"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('DirectvGO')"><img src="DGO.jpg"><div class="info"><span class="price">S/ 35.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('MovistarPlay')"><img src="Movistar.jpg"><div class="info"><span class="price">S/ 25.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('FlujoTV')"><img src="Flujotv.jpg"><div class="info"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('IPTV')"><img src="IPTV.jpg"><div class="info"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Canva')"><img src="Canva.jpg"><div class="info"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('Spotify')"><img src="Spotify.jpg"><div class="info"><span class="price">S/ 13.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('TeleLatino')"><img src="Telelatino.jpg"><div class="info"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div></div>
-        <div class="card" onclick="abrirWA('YoutubePremium')"><img src="Youtube.jpg"><div class="info"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div></div>
+        <div class="card" onclick="irWA('Netflix')"><img src="Netflix.jpg"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Disney')"><img src="Disney.jpg"><span class="price">S/ 14.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Max')"><img src="Max.jpg"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Paramount')"><img src="Paramount.jpg"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('PrimeVideo')"><img src="Primevideo.jpg"><span class="price">S/ 10.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Vix')"><img src="Vix.jpg"><span class="price">S/ 10.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Crunchyroll')"><img src="Crunchyroll.jpg"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('DirectvGO')"><img src="DGO.jpg"><span class="price">S/ 35.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('MovistarPlay')"><img src="Movistar.jpg"><span class="price">S/ 25.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('FlujoTV')"><img src="Flujotv.jpg"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('IPTV')"><img src="IPTV.jpg"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Canva')"><img src="Canva.jpg"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('Spotify')"><img src="Spotify.jpg"><span class="price">S/ 13.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('TeleLatino')"><img src="Telelatino.jpg"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div>
+        <div class="card" onclick="irWA('YoutubePremium')"><img src="Youtube.jpg"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div>
     </div>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-about">
+            <div style="flex: 2; display: flex; align-items: center; gap: 20px; min-width: 300px;">
                 <img src="icono.png" class="footer-logo">
-                <p class="footer-text">MistiPlay ofrece un servicio de streaming de calidad, podrás disfrutar con tus amigos y familia.</p>
+                <p style="font-size: 0.95rem; color: #ccc; margin: 0;">MistiPlay ofrece un servicio de calidad para disfrutar con familia y amigos.</p>
             </div>
             <div class="footer-payments">
-                <h3>Métodos de pago</h3>
+                <h3 style="color: #b388ff; margin-bottom: 10px;">Métodos de pago</h3>
                 <img src="metodosdepago.png" class="payment-img">
             </div>
         </div>
-        <div class="footer-bottom">© 2025 MistiPlay. Todos los derechos reservados.</div>
     </footer>
 
     <script>
-        // ESPECIFICACIÓN: Abrir WA sin dejar rastro de URL en el navegador
-        function abrirWA(nombre) {
-            const n = "51923666291"; // CAMBIAR AQUÍ: Tu número
-            const msg = encodeURIComponent("Hola MistiPlay, deseo comprar un perfil de " + nombre);
-            window.open("https://wa.me/" + n + "?text=" + msg, '_blank');
+        function irWA(s) {
+            const n = "51923666291";
+            const m = encodeURIComponent("Hola, deseo comprar: " + s);
+            window.open("https://wa.me/" + n + "?text=" + m, '_blank');
         }
-
         function cerrarModal() { document.getElementById('videoModal').style.display='none'; document.getElementById('videoPlayer').pause(); }
         function alternarSonido() {
-            var v=document.getElementById('videoPlayer'); var b=document.getElementById('audioBtn');
-            if(v.muted){ v.muted=false; b.innerHTML="制 Silenciar"; } else { v.muted=true; b.innerHTML="🔊 Activar Sonido"; }
+            var v=document.getElementById('videoPlayer'), b=document.getElementById('audioBtn');
+            if(v.muted){ v.muted=false; b.innerHTML="🔇 Silenciar"; } else { v.muted=true; b.innerHTML="🔊 Activar Sonido"; }
         }
     </script>
 </body>
