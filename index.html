@@ -5,127 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios Streaming</title>
     <style>
-        /* --- ESTILOS GENERALES (Fondo y Letra) --- */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0b0b; /* Color de fondo de la web */
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        /* --- ESTILOS GENERALES --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0b0b0b; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
 
-        /* --- BARRA SUPERIOR (Donde está el icono) --- */
-        header {
-            width: 100%;
-            background-color: #1a1a1a; /* Color de la barra superior */
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            position: sticky; /* Se queda fija al bajar */
-            top: 0;
-            z-index: 1000;
-        }
+        /* --- BARRA SUPERIOR (Icono) --- */
+        header { width: 100%; background-color: #1a1a1a; padding: 10px 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 1000; }
+        .header-icon { height: 60px; width: auto; }
 
-        .header-icon {
-            height: 60px; /* Tamaño del icono superior */
-            width: auto;
-        }
+        /* --- TÍTULO CENTRAL --- */
+        .title-container { width: 100%; padding: 20px 20px 15px 20px; text-align: center; line-height: 0; }
+        .main-title-img { width: 100%; height: auto; max-width: 500px; margin: 0 auto; }
 
-        /* --- CONTENEDOR DEL TÍTULO (Imagen Servicios Streaming) --- */
-        .title-container {
-            width: 100%;
-            padding: 20px 20px 15px 20px; /* Espaciado del título */
-            text-align: center;
-            line-height: 0;
-        }
+        /* --- CUADRÍCULA --- */
+        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; width: 90%; padding: 30px 0 60px 0; }
 
-        .main-title-img {
-            width: 100%;
-            height: auto;
-            max-width: 500px; /* Tamaño del título central */
-            margin: 0 auto;
-        }
+        /* --- TARJETAS --- */
+        .card { background: #161616; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; text-align: center; border: 1px solid #333; }
+        .card:hover { transform: translateY(-10px); border-color: #555; }
+        .card a { text-decoration: none; color: white; display: block; }
+        .card img { width: 100%; height: auto; display: block; }
 
-        /* --- CUADRÍCULA DE SERVICIOS --- */
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 20px;
-            max-width: 1200px;
-            width: 90%;
-            padding: 30px 0 60px 0;
-        }
+        /* --- INFO Y BOTÓN --- */
+        .info { padding: 15px; background: #161616; }
+        .price { font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; display: block; }
+        .buy-btn { display: block; background: transparent; border: 1.5px solid white; color: white; padding: 7px 0; border-radius: 20px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; transition: all 0.3s ease; }
+        .card:hover .buy-btn { background: white; color: black; }
 
-        /* --- ESTILO DE TARJETAS (Servicio) --- */
-        .card {
-            background: #161616;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-            text-align: center;
-            border: 1px solid #333;
-        }
-
-        .card:hover {
-            transform: translateY(-10px); /* Efecto de levante */
-            border-color: #555;
-        }
-
-        .card a {
-            text-decoration: none;
-            color: white;
-            display: block;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* --- PRECIO Y BOTÓN --- */
-        .info {
-            padding: 15px;
-            background: #161616;
-        }
-
-        .price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .buy-btn {
-            display: block;
-            background: transparent;
-            border: 1.5px solid white;
-            color: white;
-            padding: 7px 0;
-            border-radius: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover .buy-btn {
-            background: white;
-            color: black;
-        }
-
-        /* --- AJUSTES PARA CELULARES --- */
+        /* --- MÓVIL --- */
         @media (max-width: 600px) {
-            .container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+            .container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .price { font-size: 1.1rem; }
             .buy-btn { font-size: 0.7rem; padding: 5px 0; }
         }
@@ -152,7 +60,7 @@
         <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20DirectvGO" target="_blank"><img src="DGO.jpg"><div class="info"><span class="price">S/ 35.00</span><div class="buy-btn">Comprar</div></div></a></div>
         <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20MovistarPlay" target="_blank"><img src="Movistar.jpg"><div class="info"><span class="price">S/ 25.00</span><div class="buy-btn">Comprar</div></div></a></div>
         <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20FlujoTV" target="_blank"><img src="Flujotv.jpg"><div class="info"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div></a></div>
-        <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20IPTV" target="_blank"><img src="IPTV.jpg"><div class="info"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div></a></div
+        <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20IPTV" target="_blank"><img src="IPTV.jpg"><div class="info"><span class="price">S/ 20.00</span><div class="buy-btn">Comprar</div></div></a></div>
         <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20Canva" target="_blank"><img src="Canva.jpg"><div class="info"><span class="price">S/ 8.00</span><div class="buy-btn">Comprar</div></div></a></div>
         <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20Spotify" target="_blank"><img src="Spotify.jpg"><div class="info"><span class="price">S/ 13.00</span><div class="buy-btn">Comprar</div></div></a></div>
         <div class="card"><a href="https://wa.me/51923666291?text=Quiero%20comprar%20una%20cuenta%20TeleLatino" target="_blank"><img src="Telelatino.jpg"><div class="info"><span class="price">S/ 15.00</span><div class="buy-btn">Comprar</div></div></a></div>
