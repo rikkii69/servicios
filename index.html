@@ -8,184 +8,105 @@
         /* ==========================================
            1. ESTILOS GENERALES (Fondo y Cuerpo)
            ========================================== */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #0b0b0b; /* COLOR DE FONDO DE LA PÁGINA */
-            color: white; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0b0b0b; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
 
         /* ==========================================
            2. BARRA SUPERIOR (Donde está el icono)
            ========================================== */
-        header { 
-            width: 100%; 
-            background-color: #1a1a1a; /* COLOR DE LA BARRA */
-            padding: 10px 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-        }
-        .header-icon { 
-            height: 60px; /* TAMAÑO DEL ICONO SUPERIOR */
-            width: auto; 
-        }
+        header { width: 100%; background-color: #1a1a1a; padding: 10px 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 1000; }
+        .header-icon { height: 60px; width: auto; }
 
         /* ==========================================
-           3. VENTANA EMERGENTE (VIDEO POP-UP)
+           3. VENTANA EMERGENTE (CONTENEDOR FIJO DE VIDEO)
            ========================================== */
-        /* Fondo oscuro que cubre toda la pantalla */
         .overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000; /* Asegura que esté por encima de todo */
+            background: rgba(0, 0, 0, 0.95); /* Fondo oscuro */
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000;
         }
 
-        /* Contenedor del contenido de la ventana */
-        .modal-content {
+        .modal-container {
             position: relative;
             width: 90%;
-            max-width: 600px;
+            max-width: 400px; /* ESPECIFICACIÓN: Tamaño fijo para que no se vea gigante */
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 20px;
             text-align: center;
+            border: 2px solid #b388ff; /* Borde lila decorativo */
         }
 
-        /* Botón cerrar superior */
+        /* Botón cerrar superior derecho */
         .close-modal {
             position: absolute;
-            top: -40px;
-            right: 0;
-            background: #b388ff; /* Color lila para combinar */
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
+            top: 10px; right: 10px;
+            background: #ff4d4d; /* Color rojo para identificarlo rápido */
+            color: white; border: none;
+            padding: 5px 12px; border-radius: 5px;
+            cursor: pointer; font-weight: bold;
         }
 
-        /* Video emergente */
+        /* Video con dimensiones fijas */
         .modal-video {
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(179, 136, 255, 0.4);
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
-        /* Botón "Más información" debajo del video */
+        /* Botón "Más información" */
         .more-info-btn {
             display: inline-block;
             margin-top: 15px;
             background-color: #b388ff;
             color: white;
-            padding: 12px 25px;
+            padding: 12px 20px;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 0.9rem;
         }
-        .more-info-btn:hover { background-color: white; color: black; }
 
         /* ==========================================
            4. SECCIÓN TÍTULO Y SUBTÍTULO
            ========================================== */
-        .title-container { 
-            width: 100%; 
-            padding: 20px 20px 10px 20px; 
-            text-align: center; 
-        }
-        .main-title-img { 
-            width: 100%; 
-            height: auto; 
-            max-width: 500px; /* ANCHO MÁXIMO DE LA IMAGEN "SERVICIOS STREAMING" */
-            display: block; 
-            margin: 0 auto; 
-        }
-
-        .subtitle-text {
-            color: #b388ff; /* COLOR LILA */
-            font-size: 1.2rem; 
-            font-weight: bold;
-            margin-top: 10px; 
-            letter-spacing: 1px; 
-        }
+        .title-container { width: 100%; padding: 20px 20px 10px 20px; text-align: center; }
+        .main-title-img { width: 100%; height: auto; max-width: 500px; display: block; margin: 0 auto; }
+        .subtitle-text { color: #b388ff; font-size: 1.2rem; font-weight: bold; margin-top: 10px; letter-spacing: 1px; }
 
         /* ==========================================
            5. DISEÑO DE LAS TARJETAS (Servicios)
            ========================================== */
-        .container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 20px; 
-            max-width: 1200px; 
-            width: 90%; 
-            padding: 20px 0 60px 0; 
-        }
-
-        .card { 
-            background: #161616; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.5); 
-            transition: transform 0.3s ease; 
-            text-align: center; 
-            border: 1px solid #333; 
-        }
+        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; width: 90%; padding: 20px 0 60px 0; }
+        .card { background: #161616; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; text-align: center; border: 1px solid #333; }
         .card:hover { transform: translateY(-10px); border-color: #555; }
         .card a { text-decoration: none; color: white; display: block; }
         .card img { width: 100%; height: auto; display: block; }
-
         .info { padding: 15px; background: #161616; }
         .price { font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; display: block; }
-        .buy-btn { 
-            display: block; 
-            background: transparent; 
-            border: 1.5px solid white; 
-            color: white; 
-            padding: 7px 0; 
-            border-radius: 20px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            font-size: 0.85rem; 
-            transition: all 0.3s ease; 
-        }
+        .buy-btn { display: block; background: transparent; border: 1.5px solid white; color: white; padding: 7px 0; border-radius: 20px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; transition: all 0.3s ease; }
         .card:hover .buy-btn { background: white; color: black; }
 
-        /* ==========================================
-           6. AJUSTES PARA CELULAR (2 columnas)
-           ========================================== */
         @media (max-width: 600px) {
             .container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .subtitle-text { font-size: 1rem; }
-            .price { font-size: 1.1rem; }
-            .buy-btn { font-size: 0.7rem; padding: 5px 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="overlay" id="videoModal">
-        <div class="modal-content">
+        <div class="modal-container">
             <button class="close-modal" onclick="cerrarModal()">Cerrar</button>
             
             <video class="modal-video" id="videoPlayer" autoplay loop playsinline>
                 <source src="video.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
             </video>
 
-            <a href="https://wa.me/51923666291?text=Deseo%20mas%20información%20de%20MaxPlayer" class="more-info-btn" target="_blank">Mas información</a>
+            <a href="https://wa.me/51923666291?text=Deseo%20mas%20información%20de%20MaxPlayer" class="more-info-btn" target="_blank">Más información</a>
         </div>
     </div>
 
@@ -218,9 +139,7 @@
 
     <script>
         function cerrarModal() {
-            // Oculta el fondo negro y el video
             document.getElementById('videoModal').style.display = 'none';
-            // Pausa el video para que el sonido no siga sonando de fondo
             document.getElementById('videoPlayer').pause();
         }
     </script>
