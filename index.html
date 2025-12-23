@@ -9,7 +9,7 @@
         body { 
             font-family: 'Segoe UI', sans-serif; margin: 0; 
             display: flex; flex-direction: column; align-items: center;
-            /* EDITABLE: El valor 0.1 controla la transparencia del velo negro sobre el fondo */
+            /* EDITABLE: El primer valor 0.1 controla la oscuridad del fondo. url('fondo.jpg') es tu imagen de fondo principal. */
             background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('fondo.jpg'); 
             background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-color: black; 
         }
@@ -17,26 +17,25 @@
         /* --- 2. ENCABEZADO (HEADER) --- */
         header { 
             width: 100%; 
-            /* EDITABLE: Degradado actualizado de #401370 a #5ce1e6 */
+            /* EDITABLE: Degradado de la barra superior. Cambia los códigos # para variar los colores. */
             background: linear-gradient(90deg, #401370 0%, #5ce1e6 100%);
-            padding: 15px 0; /* EDITABLE: Grosor vertical de la barra */
-            display: flex; 
-            justify-content: flex-start; /* Mantiene el icono a la izquierda */
-            position: sticky; top: 0; z-index: 1000; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 15px 0; display: flex; justify-content: flex-start; 
+            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .header-icon { 
-            height: 60px; /* EDITABLE: Tamaño del logo superior */
-            width: auto; 
-            margin-left: 5%; /* EDITABLE: Distancia del logo desde el borde izquierdo */
+            height: 60px; /* EDITABLE: Tamaño del logo en la barra superior */
+            width: auto; margin-left: 5%; 
         }
 
-        /* --- 3. MODAL DE VIDEO --- */
+        /* --- 3. MODAL DE VIDEO (VENTANA EMERGENTE) --- */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 2000; }
-        .modal-container { position: relative; width: 75%; max-width: 320px; background: #1a1a1a; padding: 25px 15px; border-radius: 20px; text-align: center; border: 2px solid #b388ff; }
+        .modal-container { 
+            position: relative; width: 75%; max-width: 320px; 
+            background: #1a1a1a; padding: 25px 15px; border-radius: 20px; text-align: center; border: 2px solid #b388ff; 
+        }
         .modal-video { width: 100%; border-radius: 10px; display: block; }
 
-        /* --- 4. TÍTULO Y ANIMACIÓN --- */
+        /* --- 4. TÍTULO, PORTADA Y ANIMACIÓN --- */
         @keyframes fadeInEffect {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -44,15 +43,29 @@
 
         .title-container { 
             width: 100%; padding: 20px 0; text-align: center; 
-            opacity: 0; /* Empieza invisible hasta que JavaScript active la clase */
+            opacity: 0; /* Se mantiene invisible hasta que JavaScript active la animación */
         }
         
-        /* Esta clase se activará al cerrar el video */
+        /* Esta clase se activa vía JS al cerrar el video */
         .animate-title {
             animation: fadeInEffect 2s ease-out forwards; /* EDITABLE: '2s' es la velocidad del desvanecido */
         }
 
-        .main-title-img { width: 90%; max-width: 350px; height: auto; } /* EDITABLE: Tamaño logo central */
+        /* [ESPECIFICACIÓN] IMAGEN DE PORTADA */
+        .main-portada-img { 
+            width: 95%; 
+            max-width: 800px; /* EDITABLE: Ancho máximo de la portada superior */
+            height: auto; 
+            border-radius: 15px; /* EDITABLE: Redondeo de esquinas de la portada */
+            margin-bottom: 10px; 
+        }
+
+        /* [ESPECIFICACIÓN] LOGO "SERVICIOS STREAMING" */
+        .main-title-img { 
+            width: 90%; 
+            max-width: 350px; /* EDITABLE: Tamaño del logo central */
+            height: auto; 
+        }
 
         /* --- 5. TARJETAS DE SERVICIOS --- */
         .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; width: 90%; padding: 20px 0 60px 0; }
@@ -60,8 +73,8 @@
         .card:hover { transform: translateY(-10px); background: rgba(30, 30, 30, 0.9); }
         .card img { width: 100%; display: block; }
         
-        .service-name { display: block; font-size: 1.1rem; font-weight: 600; color: #b388ff; margin-top: 15px; } /* EDITABLE: Estilo nombre servicio */
-        .price { font-size: 1.3rem; font-weight: bold; padding: 5px 15px 15px 15px; display: block; color: white; } /* EDITABLE: Estilo precio */
+        .service-name { display: block; font-size: 1.1rem; font-weight: 600; color: #b388ff; margin-top: 15px; } 
+        .price { font-size: 1.3rem; font-weight: bold; padding: 5px 15px 15px 15px; display: block; color: white; } 
         .buy-btn { display: block; margin: 0 15px 15px; border: 1.5px solid white; color: white; padding: 7px 0; border-radius: 20px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; }
 
         /* --- 6. PIE DE PÁGINA (FOOTER) --- */
@@ -95,7 +108,9 @@
     <header><img src="icono.png" class="header-icon" alt="MistiPlay Icono"></header>
 
     <div class="title-container" id="mainTitle">
-        <img src="titulo.png" class="main-title-img">
+        <img src="portada.png" class="main-portada-img" alt="Portada MistiPlay">
+        <br>
+        <img src="titulo.png" class="main-title-img" alt="Servicios Streaming">
     </div>
 
     <div class="container">
@@ -140,12 +155,10 @@
             window.open("https://wa.me/" + n + "?text=" + m, '_blank');
         }
 
-        // FUNCIÓN MODIFICADA: Al cerrar el video, activa la animación del título
+        // FUNCIÓN: Al cerrar el video, activa el desvanecido de la portada y el título
         function cerrarModal() { 
             document.getElementById('videoModal').style.display = 'none'; 
             document.getElementById('videoPlayer').pause(); 
-            
-            // Añade la clase de animación al título
             document.getElementById('mainTitle').classList.add('animate-title');
         }
 
