@@ -17,11 +17,19 @@
         /* --- 2. ENCABEZADO (HEADER) --- */
         header { 
             width: 100%; 
-            background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 30%, #93c5fd 70%, #60a5fa 100%);
-            padding: 15px 0; display: flex; justify-content: flex-start; 
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            /* EDITABLE: Degradado actualizado de #401370 a #5ce1e6 */
+            background: linear-gradient(90deg, #401370 0%, #5ce1e6 100%);
+            padding: 15px 0; /* EDITABLE: Grosor vertical de la barra */
+            display: flex; 
+            justify-content: flex-start; /* Mantiene el icono a la izquierda */
+            position: sticky; top: 0; z-index: 1000; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .header-icon { height: 60px; width: auto; margin-left: 5%; } /* EDITABLE: Tamaño icono y posición */
+        .header-icon { 
+            height: 60px; /* EDITABLE: Tamaño del logo superior */
+            width: auto; 
+            margin-left: 5%; /* EDITABLE: Distancia del logo desde el borde izquierdo */
+        }
 
         /* --- 3. MODAL DE VIDEO --- */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 2000; }
