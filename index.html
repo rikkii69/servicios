@@ -6,7 +6,7 @@
     <title>Mistiplay - Tienda Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- CONFIGURACIÓN DE COLORES --- */
+        /* --- 1. CONFIGURACIÓN DE COLORES Y BASES --- */
         :root {
             --primary-blue: #2596be; 
             --bg-page: #d1d5db;
@@ -27,7 +27,7 @@
             min-height: 100vh;
         }
 
-        /* --- 1. CABECERA --- */
+        /* --- 2. CABECERA (PC ORIGINAL) --- */
         .navbar {
             background-color: var(--header-footer-bg);
             height: 65px;
@@ -61,8 +61,8 @@
         }
 
         .nav-spacer { flex-grow: 1; }
-        .nav-right { display: flex; align-items: center; }
 
+        .nav-right { display: flex; align-items: center; }
         .social-links { display: flex; gap: 12px; margin-right: 20px; }
         .social-circle {
             width: 38px; height: 38px;
@@ -100,11 +100,10 @@
             border: 1px solid #ccc;
         }
 
-        /* --- 2. PORTADA FULL WIDTH --- */
+        /* --- 3. PORTADA Y CONTENEDORES --- */
         .hero-banner { width: 100%; overflow: hidden; background-color: #000; }
         .hero-img { width: 100%; height: auto; display: block; max-width: 2560px; margin: 0 auto; }
 
-        /* --- 3. CONTENEDORES UNIFICADOS (ANUNCIO Y SERVICIOS) --- */
         .main-container {
             max-width: 1300px;
             margin: 30px auto;
@@ -112,7 +111,7 @@
             box-sizing: border-box;
         }
 
-        /* Slider de Anuncios */
+        /* Carrusel */
         .ad-slider {
             position: relative;
             width: 100%;
@@ -120,14 +119,12 @@
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
         .ad-track {
             display: flex;
             transition: transform 0.8s ease-in-out;
             width: 200%;
-            transform: translateX(-50%); /* Empieza en anuncio2 */
+            transform: translateX(-50%);
         }
-
         .ad-slide { width: 50%; position: relative; }
         .ad-img { width: 100%; height: auto; display: block; }
 
@@ -137,9 +134,7 @@
             width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
             z-index: 10; transition: 0.3s;
         }
-        .slider-arrow:hover { background: var(--primary-blue); }
-        .arrow-prev { left: 15px; }
-        .arrow-next { right: 15px; }
+        .arrow-prev { left: 15px; } .arrow-next { right: 15px; }
 
         .info-btn-ad {
             position: absolute; bottom: 20px; right: 20px;
@@ -177,7 +172,6 @@
             padding: 30px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
-
         .section-header { margin-bottom: 30px; }
         .section-title { font-size: 1.5rem; font-weight: 800; color: #1e293b; text-transform: uppercase; margin-bottom: 10px; display: block; }
         .section-divider { border: none; height: 2px; background-color: #cbd5e1; width: 100%; }
@@ -188,7 +182,7 @@
             gap: 25px;
         }
 
-        /* TARJETAS 1601x1656 */
+        /* TARJETAS */
         .card {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -236,13 +230,36 @@
         .footer-line { width: 80%; max-width: 500px; height: 1px; background: #334155; margin: 0 auto 20px auto; border: none; }
         .copyright { color: #64748b; font-size: 0.85rem; }
 
-        @media (max-width: 480px) {
-            .navbar { height: auto; flex-direction: column; padding: 10px; }
-            .nav-left, .nav-right { width: 100%; justify-content: center; margin-bottom: 10px; }
-            .search-box { width: 70%; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        /* --- 8. REGLAS PARA MÓVILES (SIN ALTERAR PC) --- */
+        @media (max-width: 768px) {
+            .navbar { 
+                height: auto; 
+                flex-direction: column; 
+                padding: 10px; 
+            }
+            .nav-left { width: 100%; justify-content: center; margin-bottom: 10px; }
+            .nav-spacer { display: none; }
+            .nav-right { width: 100%; flex-direction: column; gap: 10px; }
+            .social-links { margin: 0; order: 2; }
+            .search-box { width: 90%; order: 1; }
+            .currency-selector { order: 3; }
+
+            .main-container { margin: 15px auto; width: 98%; }
+            .services-box { padding: 15px; }
+            .products-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px; 
+            }
+            
+            .card-body { padding: 10px; }
+            .service-name { font-size: 0.9rem; margin-bottom: 8px; }
+            .price-value { font-size: 1rem; }
+            .buy-btn { padding: 6px 10px; font-size: 0.7rem; }
+            .status-badge { font-size: 0.55rem; padding: 2px 6px; }
+
+            .info-btn-ad { padding: 8px 15px; font-size: 0.7rem; bottom: 10px; right: 10px; }
             .wsp-tooltip { display: none; }
-            .info-btn-ad { padding: 8px 15px; font-size: 0.7rem; }
+            .wsp-btn { width: 50px; height: 50px; }
         }
     </style>
 </head>
@@ -335,7 +352,7 @@
 
     <script src="stock.js"></script>
     <script>
-        // CARRUSEL
+        // Lógica del Carrusel
         let currentSlide = 1; 
         const track = document.getElementById('ad-track');
         function moveSlide(dir) {
@@ -344,7 +361,7 @@
         }
         setInterval(() => moveSlide(1), 10000);
 
-        // MODAL VIDEO
+        // Lógica del Modal
         const modal = document.getElementById('videoModal');
         const video = document.getElementById('modalVideo');
         const muteIcon = document.getElementById('muteIcon');
@@ -356,7 +373,7 @@
             document.querySelector('#unmuteBtn span').innerText = video.muted ? "Activar Sonido" : "Desactivar Sonido";
         }
 
-        // RENDER PRODUCTOS
+        // Renderizado de Servicios
         const servicios = [
             {n: 'Netflix', p: '15.00', i: 'Netflix.jpg'},
             {n: 'Disney+', p: '14.00', i: 'Disney.jpg'},
@@ -382,7 +399,7 @@
             const grid = document.getElementById('grid-productos');
             grid.innerHTML = '';
             servicios.forEach(s => {
-                const status = stockData[s.n] || 'disponible';
+                const status = (typeof stockData !== 'undefined') ? (stockData[s.n] || 'disponible') : 'disponible';
                 const isAgotado = status === 'agotado';
                 grid.insertAdjacentHTML('beforeend', `
                     <div class="card ${isAgotado ? 'agotado' : ''}" ${!isAgotado ? `onclick="window.open('https://wa.me/51923666291?text=Hola Mistiplay, deseo ${s.n}', '_blank')"` : ''}>
