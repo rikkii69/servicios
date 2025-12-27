@@ -1,6 +1,7 @@
 // PANEL DE CONTROL DE DISPONIBILIDAD
 // Cambia 'disponible' por 'agotado' según necesites.
 // Asegúrate de escribirlo exactamente igual (minúsculas).
+// Si no esta en la lista lo pondra como disponible automaticamente
 
 const stockData = {
     'Netflix': 'agotado',
@@ -21,4 +22,5 @@ const stockData = {
     'ChatGPT Plus': 'disponible',
     'Spotify': 'disponible',
     'Youtube Premium': 'disponible'
+
 };
