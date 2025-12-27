@@ -6,7 +6,6 @@
     <title>Mistiplay - Tienda Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- 1. CONFIGURACIÓN DE COLORES Y BASES --- */
         :root {
             --primary-blue: #2596be; 
             --bg-page: #d1d5db;
@@ -21,13 +20,12 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-page);
-            color: #111827;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* --- 2. CABECERA (PC ORIGINAL) --- */
+        /* --- 1. CABECERA --- */
         .navbar {
             background-color: var(--header-footer-bg);
             height: 65px;
@@ -39,123 +37,48 @@
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-
         .nav-left { display: flex; align-items: center; }
         .main-icon { height: 40px; width: auto; }
         .v-separator { color: #333; font-size: 1.5rem; font-weight: 200; margin: 0 15px; }
-
-        .tab-item {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .tab-item::after {
-            content: "";
-            position: absolute;
-            bottom: 5px; left: 0; width: 100%; height: 3px;
-            background-color: var(--primary-blue);
-        }
-
+        .tab-item { color: white; text-decoration: none; font-weight: 700; font-size: 0.95rem; position: relative; padding: 20px 0; }
+        .tab-item::after { content: ""; position: absolute; bottom: 5px; left: 0; width: 100%; height: 3px; background-color: var(--primary-blue); }
         .nav-spacer { flex-grow: 1; }
-
         .nav-right { display: flex; align-items: center; }
         .social-links { display: flex; gap: 12px; margin-right: 20px; }
-        .social-circle {
-            width: 38px; height: 38px;
-            background-color: #1a1a1a; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; text-decoration: none; transition: 0.3s;
-        }
+        .social-circle { width: 38px; height: 38px; background-color: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.3s; }
         .social-circle:hover { background-color: var(--primary-blue); }
-
         .search-box { position: relative; width: 280px; display: flex; align-items: center; }
-        .search-input {
-            width: 100%;
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 25px;
-            padding: 10px 45px 10px 20px;
-            color: white;
-            outline: none;
-        }
-        .search-btn {
-            position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
-            background: none; border: none; color: #ffffff; cursor: pointer;
-        }
+        .search-input { width: 100%; background-color: #1a1a1a; border: 1px solid #333; border-radius: 25px; padding: 10px 45px 10px 20px; color: white; outline: none; }
+        .search-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #ffffff; cursor: pointer; }
+        .currency-selector { background-color: white; color: black; display: flex; align-items: center; padding: 5px 12px; border-radius: 5px; font-weight: 800; font-size: 0.8rem; gap: 8px; }
+        .flag { width: 20px; height: 14px; background: linear-gradient(90deg, #d91023 33%, #fff 33%, #fff 66%, #d91023 66%); border: 1px solid #ccc; }
 
-        .currency-selector {
-            background-color: white;
-            color: black;
-            display: flex; align-items: center;
-            padding: 5px 12px; border-radius: 5px;
-            font-weight: 800; font-size: 0.8rem; gap: 8px;
-        }
-        .flag {
-            width: 20px; height: 14px;
-            background: linear-gradient(90deg, #d91023 33%, #fff 33%, #fff 66%, #d91023 66%);
-            border: 1px solid #ccc;
-        }
-
-        /* --- 3. PORTADA Y CONTENEDORES --- */
-        .hero-banner { width: 100%; overflow: hidden; background-color: #000; }
+        /* --- 2. SECCIONES ANCHO COMPLETO --- */
+        .full-width-section { width: 100%; overflow: hidden; background-color: #000; position: relative; }
         .hero-img { width: 100%; height: auto; display: block; max-width: 2560px; margin: 0 auto; }
 
-        .main-container {
-            max-width: 1300px;
-            margin: 30px auto;
-            width: 95%;
-            box-sizing: border-box;
-        }
+        .ad-section { width: 100%; overflow: hidden; background-color: #000; position: relative; height: 400px; }
+        .ad-track { display: flex; height: 100%; transition: transform 0.8s ease-in-out; width: 200%; transform: translateX(-50%); }
+        .ad-slide { width: 50%; height: 100%; position: relative; }
+        .ad-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* Carrusel */
-        .ad-slider {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .ad-track {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-            width: 200%;
-            transform: translateX(-50%);
-        }
-        .ad-slide { width: 50%; position: relative; }
-        .ad-img { width: 100%; height: auto; display: block; }
-
-        .slider-arrow {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(0,0,0,0.5); color: white; border: none;
-            width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-            z-index: 10; transition: 0.3s;
-        }
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; }
         .arrow-prev { left: 15px; } .arrow-next { right: 15px; }
+        .info-btn-ad { position: absolute; bottom: 20px; right: 20px; background-color: var(--primary-green); color: white; padding: 12px 24px; border-radius: 6px; font-size: 0.85rem; font-weight: 900; cursor: pointer; border: none; text-transform: uppercase; z-index: 11; }
 
-        .info-btn-ad {
-            position: absolute; bottom: 20px; right: 20px;
-            background-color: var(--primary-green); color: white;
-            padding: 12px 24px; border-radius: 6px; font-size: 0.85rem;
-            font-weight: 900; cursor: pointer; border: none; text-transform: uppercase;
-        }
-
-        /* --- 4. MODAL DE VIDEO --- */
+        /* --- 3. MODAL DE VIDEO (ESTRUCTURA ORIGINAL RESTAURADA) --- */
         .overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); display: none; 
             justify-content: center; align-items: center; z-index: 3000; 
         }
         .modal-container { 
-            position: relative; width: 90%; max-width: 350px; 
-            background: #1a1a1a; padding: 30px 20px; border-radius: 20px; 
+            position: relative; width: 75%; max-width: 320px; 
+            background: #1a1a1a; padding: 25px 15px; border-radius: 20px; 
             text-align: center; border: 2px solid #b388ff; 
         }
         .modal-video { width: 100%; border-radius: 10px; display: block; margin-bottom: 20px; }
-        .modal-buttons { display: flex; flex-direction: column; gap: 12px; }
+        .modal-buttons { display: flex; flex-direction: column; gap: 10px; }
         .btn-modal {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             color: white; padding: 12px; border-radius: 8px; font-weight: 800;
@@ -165,45 +88,22 @@
         .btn-blue { background-color: var(--primary-blue); }
         .btn-red { background-color: #dc3545; }
 
-        /* --- 5. SERVICIOS --- */
-        .services-box {
-            background-color: var(--card-container-bg);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .section-header { margin-bottom: 30px; }
+        /* --- 4. SERVICIOS --- */
+        .main-container { max-width: 1300px; margin: 30px auto; width: 95%; box-sizing: border-box; }
+        .services-box { background-color: var(--card-container-bg); border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .section-title { font-size: 1.5rem; font-weight: 800; color: #1e293b; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .section-divider { border: none; height: 2px; background-color: #cbd5e1; width: 100%; }
+        .section-divider { border: none; height: 2px; background-color: #cbd5e1; width: 100%; margin-bottom: 30px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 25px;
-        }
-
-        /* TARJETAS */
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #2a475e;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
+        .card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2a475e; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary-blue); }
         .card.agotado { opacity: 0.7; cursor: not-allowed; }
-
         .card-img-container { width: 100%; aspect-ratio: 1601 / 1656; overflow: hidden; background: #000; }
         .card-img { width: 100%; height: 100%; object-fit: contain; display: block; }
-
         .card-body { padding: 18px; background-color: #0f1720; color: white; }
         .status-badge { font-size: 0.65rem; padding: 4px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
         .status-disponible { background-color: #28a745; color: white; }
         .status-agotado { background-color: #dc3545; color: white; }
-
         .service-name { font-weight: 700; margin-bottom: 15px; display: block; font-size: 1.1rem; }
         .purchase-area { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 12px; }
         .price-box { display: flex; flex-direction: column; }
@@ -211,54 +111,30 @@
         .price-value { color: var(--primary-blue); font-weight: 800; font-size: 1.2rem; }
         .buy-btn { background-color: var(--primary-blue); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; }
 
-        /* --- 6. WHATSAPP FLOTANTE --- */
+        /* --- 5. WSP Y FOOTER --- */
         .wsp-container { position: fixed; bottom: 30px; right: 30px; z-index: 2000; display: flex; align-items: center; }
         .wsp-tooltip { background-color: #111827; color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-right: 15px; opacity: 0; visibility: hidden; transition: 0.3s; white-space: nowrap; }
         .wsp-btn { width: 60px; height: 60px; display: block; transition: 0.3s; }
         .wsp-btn img { width: 100%; height: 100%; display: block; }
         .wsp-container:hover .wsp-tooltip { opacity: 1; visibility: visible; }
-        .wsp-btn:hover { transform: scale(1.1); }
-
-        /* --- 7. PIE DE PÁGINA --- */
-        footer {
-            background-color: var(--header-footer-bg);
-            padding: 40px 0 25px 0; text-align: center;
-            border-top: 2px solid var(--primary-blue);
-        }
-        .footer-text { color: white; font-weight: 600; margin-bottom: 15px; display: block; }
+        footer { background-color: var(--header-footer-bg); padding: 40px 0 25px 0; text-align: center; border-top: 2px solid var(--primary-blue); }
         .payment-img { height: 30px; width: auto; margin: 0 auto 25px auto; display: block; }
-        .footer-line { width: 80%; max-width: 500px; height: 1px; background: #334155; margin: 0 auto 20px auto; border: none; }
-        .copyright { color: #64748b; font-size: 0.85rem; }
 
-        /* --- 8. REGLAS PARA MÓVILES (SIN ALTERAR PC) --- */
+        /* MÓVIL (ICONO Y BUSCADOR EXCLUSIVO) */
         @media (max-width: 768px) {
-            .navbar { 
-                height: auto; 
-                flex-direction: column; 
-                padding: 10px; 
-            }
-            .nav-left { width: 100%; justify-content: center; margin-bottom: 10px; }
-            .nav-spacer { display: none; }
-            .nav-right { width: 100%; flex-direction: column; gap: 10px; }
-            .social-links { margin: 0; order: 2; }
-            .search-box { width: 90%; order: 1; }
-            .currency-selector { order: 3; }
-
+            .navbar { height: 60px; padding: 0 15px; justify-content: space-between; }
+            .v-separator, .tab-item, .nav-spacer, .social-links, .currency-selector { display: none !important; }
+            .nav-right { width: 70%; display: flex; justify-content: flex-end; }
+            .search-box { width: 100%; max-width: 220px; }
+            .ad-section { height: 320px; }
             .main-container { margin: 15px auto; width: 98%; }
             .services-box { padding: 15px; }
-            .products-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 10px; 
-            }
-            
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .card-body { padding: 10px; }
-            .service-name { font-size: 0.9rem; margin-bottom: 8px; }
+            .service-name { font-size: 0.9rem; }
             .price-value { font-size: 1rem; }
             .buy-btn { padding: 6px 10px; font-size: 0.7rem; }
-            .status-badge { font-size: 0.55rem; padding: 2px 6px; }
-
             .info-btn-ad { padding: 8px 15px; font-size: 0.7rem; bottom: 10px; right: 10px; }
-            .wsp-tooltip { display: none; }
             .wsp-btn { width: 50px; height: 50px; }
         }
     </style>
@@ -274,37 +150,37 @@
         <div class="nav-spacer"></div>
         <div class="nav-right">
             <div class="social-links">
-                <a href="https://www.facebook.com/mistiplaygo" target="_blank" class="social-circle"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/mistiplaygo" target="_blank" class="social-circle"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@mistiplay" target="_blank" class="social-circle"><i class="fab fa-tiktok"></i></a>
+                <a href="https://facebook.com/mistiplaygo" target="_blank" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/mistiplaygo" target="_blank" class="social-circle"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@mistiplay" target="_blank" class="social-circle"><i class="fab fa-tiktok"></i></a>
             </div>
             <div class="search-box">
                 <input id="search" type="text" class="search-input" placeholder="Buscar productos...">
                 <button class="search-btn"><i class="fa fa-search"></i></button>
             </div>
             <span class="v-separator">|</span>
-            <div class="currency-selector">
-                <div class="flag"></div>
-                <span>PEN</span>
-                <i class="fa fa-chevron-down" style="font-size: 0.6rem;"></i>
-            </div>
+            <div class="currency-selector"><div class="flag"></div><span>PEN</span><i class="fa fa-chevron-down" style="font-size: 0.6rem; margin-left:8px;"></i></div>
         </div>
     </nav>
 
-    <div class="hero-banner">
-        <img src="portada.jpg" class="hero-img">
-    </div>
+    <div class="full-width-section"><img src="portada.jpg" class="hero-img"></div>
 
-    <div class="main-container">
-        <div class="ad-slider">
-            <button class="slider-arrow arrow-prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-arrow arrow-next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
-            <div class="ad-track" id="ad-track">
-                <div class="ad-slide"><img src="anuncio.jpg" class="ad-img"></div>
-                <div class="ad-slide">
+    <div class="ad-section">
+        <button class="slider-arrow arrow-prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow arrow-next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="ad-track" id="ad-track">
+            <div class="ad-slide">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="anuncio_movil.jpg">
+                    <img src="anuncio.jpg" class="ad-img">
+                </picture>
+            </div>
+            <div class="ad-slide">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="anuncio2_movil.jpg">
                     <img src="anuncio2.jpg" class="ad-img">
-                    <button class="info-btn-ad" onclick="openModal()">MÁS INFORMACIÓN</button>
-                </div>
+                </picture>
+                <button class="info-btn-ad" onclick="openModal()">MÁS INFORMACIÓN</button>
             </div>
         </div>
     </div>
@@ -313,15 +189,9 @@
         <div class="modal-container">
             <video id="modalVideo" class="modal-video" src="video.mp4" loop muted playsinline></video>
             <div class="modal-buttons">
-                <button id="unmuteBtn" class="btn-modal btn-blue" onclick="toggleMute()">
-                    <i id="muteIcon" class="fas fa-volume-mute"></i> <span>Activar Sonido</span>
-                </button>
-                <a href="https://wa.me/51923666291?text=Deseo%20mas%20informaci%C3%B3n%20MaxPlayer" target="_blank" class="btn-modal btn-green">
-                    <i class="fab fa-whatsapp"></i> MÁS INFORMACIÓN
-                </a>
-                <button class="btn-modal btn-red" onclick="closeModal()">
-                    <i class="fas fa-times"></i> CERRAR
-                </button>
+                <button id="unmuteBtn" class="btn-modal btn-blue" onclick="toggleMute()"><i id="muteIcon" class="fas fa-volume-mute"></i> <span>Activar Sonido</span></button>
+                <a href="https://wa.me/51923666291?text=Deseo%20mas%20informaci%C3%B3n%20MaxPlayer" target="_blank" class="btn-modal btn-green"><i class="fab fa-whatsapp"></i> MÁS INFORMACIÓN</a>
+                <button class="btn-modal btn-red" onclick="closeModal()"><i class="fas fa-times"></i> CERRAR</button>
             </div>
         </div>
     </div>
@@ -338,30 +208,21 @@
 
     <div class="wsp-container">
         <div class="wsp-tooltip">Chatea con nosotros</div>
-        <a href="https://wa.me/51923666291?text=%C2%A1Hola%20Mistiplay!" target="_blank" class="wsp-btn">
-            <img src="wsp.png" alt="WhatsApp">
-        </a>
+        <a href="https://wa.me/51923666291" target="_blank" class="wsp-btn"><img src="wsp.png"></a>
     </div>
 
     <footer>
-        <span class="footer-text">Métodos de pago:</span>
         <img src="metodosdepago.png" class="payment-img">
-        <hr class="footer-line">
-        <span class="copyright">© 2025 MistiPlay. Todos los derechos reservados.</span>
+        <p style="color:#64748b; font-size:0.85rem;">© 2025 MistiPlay. Todos los derechos reservados.</p>
     </footer>
 
     <script src="stock.js"></script>
     <script>
-        // Lógica del Carrusel
-        let currentSlide = 1; 
+        let currentSlide = 1;
         const track = document.getElementById('ad-track');
-        function moveSlide(dir) {
-            currentSlide = (currentSlide + dir + 2) % 2;
-            track.style.transform = `translateX(-${currentSlide * 50}%)`;
-        }
+        function moveSlide(dir) { currentSlide = (currentSlide + dir + 2) % 2; track.style.transform = `translateX(-${currentSlide * 50}%)`; }
         setInterval(() => moveSlide(1), 10000);
 
-        // Lógica del Modal
         const modal = document.getElementById('videoModal');
         const video = document.getElementById('modalVideo');
         const muteIcon = document.getElementById('muteIcon');
@@ -373,43 +234,32 @@
             document.querySelector('#unmuteBtn span').innerText = video.muted ? "Activar Sonido" : "Desactivar Sonido";
         }
 
-        // Renderizado de Servicios
         const servicios = [
-            {n: 'Netflix', p: '15.00', i: 'Netflix.jpg'},
-            {n: 'Disney+', p: '14.00', i: 'Disney.jpg'},
-            {n: 'HBO Max', p: '8.00', i: 'Max.jpg'},
-            {n: 'Paramount+', p: '8.00', i: 'Paramount.jpg'},
-            {n: 'Prime Video', p: '10.00', i: 'Primevideo.jpg'},
-            {n: 'Vix Premium', p: '10.00', i: 'Vix.jpg'},
-            {n: 'Crunchyroll', p: '8.00', i: 'Crunchyroll.jpg'},
-            {n: 'Apple TV+', p: '15.00', i: 'Apple.jpg'},
-            {n: 'Directv GO', p: '35.00', i: 'DGO.jpg'},
-            {n: 'Movistar TV', p: '25.00', i: 'Movistar.jpg'},
-            {n: 'Tele Latino', p: '15.00', i: 'Telelatino.jpg'},
-            {n: 'Flujo TV', p: '20.00', i: 'Flujotv.jpg'},
-            {n: 'IPTV Player', p: '20.00', i: 'IPTV.jpg'},
-            {n: 'Canva Pro', p: '8.00', i: 'Canva.jpg'},
-            {n: 'CapCut Pro', p: '15.00', i: 'Capcut.jpg'},
-            {n: 'ChatGPT Plus', p: '15.00', i: 'Chat.jpg'},
-            {n: 'Spotify', p: '13.00', i: 'Spotify.jpg'},
-            {n: 'Youtube Premium', p: '15.00', i: 'Youtube.jpg'}
+            {n: 'Netflix', p: '15.00', i: 'Netflix.jpg'}, {n: 'Disney+', p: '14.00', i: 'Disney.jpg'},
+            {n: 'HBO Max', p: '8.00', i: 'Max.jpg'}, {n: 'Paramount+', p: '8.00', i: 'Paramount.jpg'},
+            {n: 'Prime Video', p: '10.00', i: 'Primevideo.jpg'}, {n: 'Vix Premium', p: '10.00', i: 'Vix.jpg'},
+            {n: 'Crunchyroll', p: '8.00', i: 'Crunchyroll.jpg'}, {n: 'Apple TV+', p: '15.00', i: 'Apple.jpg'},
+            {n: 'Directv GO', p: '35.00', i: 'DGO.jpg'}, {n: 'Movistar TV', p: '25.00', i: 'Movistar.jpg'},
+            {n: 'Tele Latino', p: '15.00', i: 'Telelatino.jpg'}, {n: 'Flujo TV', p: '20.00', i: 'Flujotv.jpg'},
+            {n: 'IPTV Player', p: '20.00', i: 'IPTV.jpg'}, {n: 'Canva Pro', p: '8.00', i: 'Canva.jpg'},
+            {n: 'CapCut Pro', p: '15.00', i: 'Capcut.jpg'}, {n: 'ChatGPT Plus', p: '15.00', i: 'Chat.jpg'},
+            {n: 'Spotify', p: '13.00', i: 'Spotify.jpg'}, {n: 'Youtube Premium', p: '15.00', i: 'Youtube.jpg'}
         ];
 
         function render() {
             const grid = document.getElementById('grid-productos');
             grid.innerHTML = '';
             servicios.forEach(s => {
-                const status = (typeof stockData !== 'undefined') ? (stockData[s.n] || 'disponible') : 'disponible';
-                const isAgotado = status === 'agotado';
+                const status = typeof stockData !== 'undefined' ? (stockData[s.n] || 'disponible') : 'disponible';
                 grid.insertAdjacentHTML('beforeend', `
-                    <div class="card ${isAgotado ? 'agotado' : ''}" ${!isAgotado ? `onclick="window.open('https://wa.me/51923666291?text=Hola Mistiplay, deseo ${s.n}', '_blank')"` : ''}>
+                    <div class="card ${status==='agotado'?'agotado':''}" ${status==='agotado' ? '' : `onclick="window.open('https://wa.me/51923666291?text=Hola Mistiplay, deseo ${s.n}', '_blank')"`}>
                         <div class="card-img-container"><img src="${s.i}" class="card-img"></div>
                         <div class="card-body">
-                            <div class="status-badge ${isAgotado ? 'status-agotado' : 'status-disponible'}">${status}</div>
+                            <div class="status-badge ${status==='agotado'?'status-agotado':'status-disponible'}">${status}</div>
                             <span class="service-name">${s.n}</span>
                             <div class="purchase-area">
                                 <div class="price-box"><span class="price-label">Precio</span><span class="price-value">S/ ${s.p}</span></div>
-                                <div class="buy-btn">${isAgotado ? 'Sin Stock' : 'Comprar'}</div>
+                                <div class="buy-btn">COMPRAR</div>
                             </div>
                         </div>
                     </div>`);
