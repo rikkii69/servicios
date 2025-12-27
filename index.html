@@ -20,12 +20,13 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-page);
+            color: #111827;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* --- 1. CABECERA --- */
+        /* --- 1. CABECERA (ESTÉTICA PC) --- */
         .navbar {
             background-color: var(--header-footer-bg);
             height: 65px;
@@ -39,7 +40,7 @@
         }
         .nav-left { display: flex; align-items: center; }
         .main-icon { height: 40px; width: auto; }
-        .v-separator { color: #333; font-size: 1.5rem; font-weight: 200; margin: 0 15px; }
+        .v-separator { color: #333; font-size: 1.5rem; margin: 0 15px; }
         .tab-item { color: white; text-decoration: none; font-weight: 700; font-size: 0.95rem; position: relative; padding: 20px 0; }
         .tab-item::after { content: ""; position: absolute; bottom: 5px; left: 0; width: 100%; height: 3px; background-color: var(--primary-blue); }
         .nav-spacer { flex-grow: 1; }
@@ -67,23 +68,11 @@
         .info-btn-ad { position: absolute; bottom: 20px; right: 20px; background-color: var(--primary-green); color: white; padding: 12px 24px; border-radius: 6px; font-size: 0.85rem; font-weight: 900; cursor: pointer; border: none; text-transform: uppercase; z-index: 11; }
 
         /* --- 3. MODAL DE VIDEO --- */
-        .overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); display: none; 
-            justify-content: center; align-items: center; z-index: 3000; 
-        }
-        .modal-container { 
-            position: relative; width: 75%; max-width: 320px; 
-            background: #1a1a1a; padding: 25px 15px; border-radius: 20px; 
-            text-align: center; border: 2px solid #b388ff; 
-        }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; justify-content: center; align-items: center; z-index: 3000; }
+        .modal-container { position: relative; width: 75%; max-width: 320px; background: #1a1a1a; padding: 25px 15px; border-radius: 20px; text-align: center; border: 2px solid #b388ff; }
         .modal-video { width: 100%; border-radius: 10px; display: block; margin-bottom: 20px; }
         .modal-buttons { display: flex; flex-direction: column; gap: 10px; }
-        .btn-modal {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            color: white; padding: 12px; border-radius: 8px; font-weight: 800;
-            text-decoration: none; border: none; text-transform: uppercase; font-size: 0.8rem; cursor: pointer;
-        }
+        .btn-modal { display: flex; align-items: center; justify-content: center; gap: 10px; color: white; padding: 12px; border-radius: 8px; font-weight: 800; border: none; text-transform: uppercase; font-size: 0.8rem; cursor: pointer; }
         .btn-green { background-color: var(--primary-green); }
         .btn-blue { background-color: var(--primary-blue); }
         .btn-red { background-color: #dc3545; }
@@ -98,16 +87,14 @@
         .card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2a475e; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary-blue); }
         .card.agotado { opacity: 0.7; cursor: not-allowed; }
-        .card-img-container { width: 100%; aspect-ratio: 1601 / 1656; overflow: hidden; background: #000; }
+        .card-img-container { width: 100%; aspect-ratio: 1601/1656; overflow: hidden; background: #000; }
         .card-img { width: 100%; height: 100%; object-fit: contain; display: block; }
         .card-body { padding: 18px; background-color: #0f1720; color: white; }
         .status-badge { font-size: 0.65rem; padding: 4px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-        .status-disponible { background-color: #28a745; color: white; }
-        .status-agotado { background-color: #dc3545; color: white; }
+        .status-disponible { background-color: #28a745; }
+        .status-agotado { background-color: #dc3545; }
         .service-name { font-weight: 700; margin-bottom: 15px; display: block; font-size: 1.1rem; }
         .purchase-area { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 12px; }
-        .price-box { display: flex; flex-direction: column; }
-        .price-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; }
         .price-value { color: var(--primary-blue); font-weight: 800; font-size: 1.2rem; }
         .buy-btn { background-color: var(--primary-blue); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; }
 
@@ -117,10 +104,10 @@
         .wsp-btn { width: 60px; height: 60px; display: block; transition: 0.3s; }
         .wsp-btn img { width: 100%; height: 100%; display: block; }
         .wsp-container:hover .wsp-tooltip { opacity: 1; visibility: visible; }
-        footer { background-color: var(--header-footer-bg); padding: 40px 0 25px 0; text-align: center; border-top: 2px solid var(--primary-blue); }
-        .payment-img { height: 30px; width: auto; margin: 0 auto 25px auto; display: block; }
+        footer { background-color: var(--header-footer-bg); padding: 40px 0; text-align: center; border-top: 2px solid var(--primary-blue); }
+        .payment-img { height: 30px; width: auto; margin: 0 auto 20px auto; display: block; }
 
-        /* MÓVIL (ICONO Y BUSCADOR EXCLUSIVO) */
+        /* --- MÓVIL MINIMALISTA --- */
         @media (max-width: 768px) {
             .navbar { height: 60px; padding: 0 15px; justify-content: space-between; }
             .v-separator, .tab-item, .nav-spacer, .social-links, .currency-selector { display: none !important; }
@@ -190,7 +177,7 @@
             <video id="modalVideo" class="modal-video" src="video.mp4" loop muted playsinline></video>
             <div class="modal-buttons">
                 <button id="unmuteBtn" class="btn-modal btn-blue" onclick="toggleMute()"><i id="muteIcon" class="fas fa-volume-mute"></i> <span>Activar Sonido</span></button>
-                <a href="https://wa.me/51923666291?text=Deseo%20mas%20informaci%C3%B3n%20MaxPlayer" target="_blank" class="btn-modal btn-green"><i class="fab fa-whatsapp"></i> MÁS INFORMACIÓN</a>
+                <a href="https://wa.me/51923666291?text=Deseo%20mas%20informaci%C3%B3n%20MaxPlayer" target="_blank" class="btn-modal btn-green" style="text-decoration:none;"><i class="fab fa-whatsapp"></i> MÁS INFORMACIÓN</a>
                 <button class="btn-modal btn-red" onclick="closeModal()"><i class="fas fa-times"></i> CERRAR</button>
             </div>
         </div>
@@ -260,7 +247,7 @@
                             <div class="status-badge ${status==='agotado'?'status-agotado':'status-disponible'}">${status}</div>
                             <span class="service-name" style="font-weight:700; display:block; margin-bottom:10px;">${s.n}</span>
                             <div class="purchase-area">
-                                <div class="price-box"><span class="price-label">Precio</span><span class="price-value">S/ ${s.p}</span></div>
+                                <div style="display:flex; flex-direction:column;"><span style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase;">Precio</span><span class="price-value">S/ ${s.p}</span></div>
                                 <div class="buy-btn">COMPRAR</div>
                             </div>
                         </div>
